@@ -1,0 +1,29 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <h1 class="auth-title">Verificación de Email</h1>
+
+    @if (isLoading()) {
+      <div class="loading-state">
+        <div class="spinner-large"></div>
+        <p>Verificando tu email...</p>
+      </div>
+    }
+
+    @if (errorMessage()) {
+      <div class="alert alert-error">
+        {{ errorMessage() }}
+      </div>
+      <button (click)="goToHome()" class="btn btn-primary btn-block">
+        Ir al Inicio
+      </button>
+    }
+
+    @if (successMessage()) {
+      <div class="alert alert-success">
+        {{ successMessage() }}
+      </div>
+      <div class="success-icon">✓</div>
+    }
+  </div>
+</div>
+

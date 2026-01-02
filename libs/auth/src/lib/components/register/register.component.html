@@ -1,0 +1,126 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <h1 class="auth-title">Crear Cuenta</h1>
+
+    @if (errorMessage()) {
+      <div class="alert alert-error">
+        {{ errorMessage() }}
+      </div>
+    }
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="auth-form">
+      <!-- Name -->
+      <div class="form-group">
+        <label for="name" class="form-label">Nombre</label>
+        <input
+          id="name"
+          type="text"
+          formControlName="name"
+          class="form-input"
+          placeholder="Tu nombre"
+          [class.invalid]="registerForm.get('name')?.invalid && registerForm.get('name')?.touched"
+        />
+        @if (registerForm.get('name')?.invalid && registerForm.get('name')?.touched) {
+          <div class="form-error">
+            @if (registerForm.get('name')?.hasError('required')) {
+              El nombre es requerido
+            }
+            @if (registerForm.get('name')?.hasError('minlength')) {
+              El nombre debe tener al menos 2 caracteres
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          class="form-input"
+          placeholder="tu@email.com"
+          [class.invalid]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
+        />
+        @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
+          <div class="form-error">
+            @if (registerForm.get('email')?.hasError('required')) {
+              El email es requerido
+            }
+            @if (registerForm.get('email')?.hasError('email')) {
+              Email inválido
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password" class="form-label">Contraseña</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          class="form-input"
+          placeholder="••••••••"
+          [class.invalid]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
+        />
+        @if (registerForm.get('password')?.invalid && registerForm.get('password')?.touched) {
+          <div class="form-error">
+            @if (registerForm.get('password')?.hasError('required')) {
+              La contraseña es requerida
+            }
+            @if (registerForm.get('password')?.hasError('minlength')) {
+              La contraseña debe tener al menos 6 caracteres
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="form-group">
+        <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+        <input
+          id="confirmPassword"
+          type="password"
+          formControlName="confirmPassword"
+          class="form-input"
+          placeholder="••••••••"
+          [class.invalid]="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched"
+        />
+        @if (registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched) {
+          <div class="form-error">
+            @if (registerForm.get('confirmPassword')?.hasError('required')) {
+              Confirma tu contraseña
+            }
+            @if (registerForm.get('confirmPassword')?.hasError('passwordMismatch')) {
+              Las contraseñas no coinciden
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="btn btn-primary btn-block"
+        [disabled]="isLoading() || registerForm.invalid"
+      >
+        @if (isLoading()) {
+          <span class="spinner"></span>
+          Creando cuenta...
+        } @else {
+          Crear Cuenta
+        }
+      </button>
+
+      <!-- Login Link -->
+      <div class="form-footer">
+        <span>¿Ya tienes cuenta?</span>
+        <a (click)="goToLogin()" class="link">Iniciar Sesión</a>
+      </div>
+    </form>
+  </div>
+</div>
+
