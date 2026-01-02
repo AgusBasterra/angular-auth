@@ -6,7 +6,7 @@ Este es un sistema de autenticación completo y reutilizable para Angular 21+.
 
 ```
 angular-auth/
-├── libs/auth/              # 📚 Librería de autenticación (publicable)
+├── libs/auth/              # 📚 Librería de autenticación
 │   ├── src/
 │   │   ├── lib/
 │   │   │   ├── config/     # Configuración y providers
@@ -27,39 +27,6 @@ angular-auth/
     └── README.md
 ```
 
-## 🚀 Estado Actual
-
-### ✅ Completado
-
-1. **Librería Core (`libs/auth/`)**
-   - ✅ Modelos y DTOs del contrato backend ↔ frontend
-   - ✅ Configuración completa (`AuthConfig`)
-   - ✅ Services con Signals (Angular 21)
-     - ✅ `AuthService` (login, register, logout, refresh, etc.)
-     - ✅ `AuthStorageService` (localStorage/sessionStorage/memory)
-     - ✅ `AuthHttpService` (HTTP calls al backend)
-   - ✅ `authInterceptor` funcional (agrega Bearer token)
-   - ✅ `authGuard` y `roleGuard` funcionales
-   - ✅ `provideAuth()` provider principal
-   - ✅ Componentes standalone:
-     - ✅ LoginComponent
-     - ✅ RegisterComponent
-     - ✅ ForgotPasswordComponent
-     - ✅ ResetPasswordComponent
-     - ✅ VerifyEmailComponent
-   - ✅ Public API (`index.ts`) exportando todo
-   - ✅ package.json configurado para publicación
-   - ✅ README completo con documentación
-
-2. **App Demo (`apps/demo/`)**
-   - ✅ Aplicación Angular 21 standalone
-   - ✅ Configurada con `provideAuth()`
-   - ✅ Rutas protegidas con `authGuard`
-   - ✅ Componentes:
-     - ✅ DashboardComponent (muestra info del usuario)
-     - ✅ ProfileComponent (perfil detallado)
-   - ✅ README con instrucciones
-
 ## 📝 Próximos Pasos
 
 ### 1. Probar la Demo
@@ -71,21 +38,7 @@ npx nx serve demo
 
 Necesitarás un backend. Ver `apps/demo/README.md` para opciones de mock.
 
-### 2. Publicar la Librería
-
-```bash
-# Compilar
-npx nx build auth
-
-# Publicar a npm (privado o público)
-cd dist/libs/auth
-npm publish --access public
-
-# O publicar a GitHub Packages
-npm publish --registry=https://npm.pkg.github.com
-```
-
-### 4. Usar en Otros Proyectos
+### 2. Usar en Otros Proyectos
 
 ```bash
 # Instalar
@@ -134,7 +87,7 @@ export const appConfig = {
 
 - **Librería**: `libs/auth/README.md` - Documentación completa de la API
 - **Demo**: `apps/demo/README.md` - Cómo ejecutar la demo
-- **Contrato Backend**: Ver DTOs en `libs/auth/src/lib/models/auth-dtos.ts`
+- **Backend**: Ver DTOs en `libs/auth/src/lib/models/auth-dtos.ts`
 
 ## 🔧 Comandos Útiles
 
@@ -212,10 +165,5 @@ Este es un proyecto interno. Para contribuir:
 4. Actualiza la documentación si es necesario
 5. Crea un PR
 
-## 📄 Licencia
-
-MIT
-
----
 
 **Desarrollado por Agustín Basterra** 🚀
