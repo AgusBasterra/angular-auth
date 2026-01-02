@@ -391,5 +391,3 @@ MIT
 Contribuciones son bienvenidas. Por favor abre un issue o PR en GitHub.
 
 ---
-
-**Hecho con ❤️ para software factories**

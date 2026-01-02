@@ -6,7 +6,8 @@
 export { provideAuth, provideAuthWithoutInterceptor } from './lib/config/auth.provider';
 
 // Configuración
-export { AuthConfig, DEFAULT_AUTH_CONFIG, mergeAuthConfig } from './lib/config/auth.config';
+export type { AuthConfig } from './lib/config/auth.config';
+export { DEFAULT_AUTH_CONFIG, mergeAuthConfig } from './lib/config/auth.config';
 export { AUTH_CONFIG } from './lib/config/auth.tokens';
 
 // Servicios
@@ -28,13 +29,12 @@ export { ForgotPasswordComponent } from './lib/components/forgot-password/forgot
 export { ResetPasswordComponent } from './lib/components/reset-password/reset-password.component';
 export { VerifyEmailComponent } from './lib/components/verify-email/verify-email.component';
 
-// Modelos y DTOs
-export {
-  // Models
-  AuthUser,
-  AuthTokens,
-  
-  // Request DTOs
+// Modelos
+export type { AuthUser } from './lib/models/auth-user.model';
+export type { AuthTokens } from './lib/models/auth-tokens.model';
+
+// DTOs - Request
+export type {
   LoginRequest,
   RegisterRequest,
   RefreshTokenRequest,
@@ -42,8 +42,10 @@ export {
   ResetPasswordRequest,
   ResendVerificationRequest,
   VerifyEmailRequest,
-  
-  // Response DTOs
+} from './lib/models/auth-dtos';
+
+// DTOs - Response
+export type {
   AuthResponse,
   UserDto,
   MessageResponse,
@@ -53,6 +55,3 @@ export {
   ResendVerificationResponse,
   VerifyEmailResponse,
 } from './lib/models/auth-dtos';
-
-export type { AuthUser } from './lib/models/auth-user.model';
-export type { AuthTokens } from './lib/models/auth-tokens.model';

@@ -135,9 +135,13 @@ export function mergeAuthConfig(config: AuthConfig): Required<AuthConfig> {
     tenantStrategy: config.tenantStrategy ?? DEFAULT_AUTH_CONFIG.tenantStrategy!,
     tenantId: config.tenantId ?? '',
     tenantHeader: config.tenantHeader ?? DEFAULT_AUTH_CONFIG.tenantHeader!,
-    getTenantId: config.getTenantId,
-    userMapper: config.userMapper,
-    tokenMapper: config.tokenMapper,
+    getTenantId: config.getTenantId ?? (() => config.tenantId ?? ''),
+    userMapper: config.userMapper ?? ((user: any) => user),
+    tokenMapper: config.tokenMapper ?? ((response: any) => ({
+      accessToken: response.accessToken,
+      refreshToken: response.refreshToken,
+      expiresIn: response.expiresIn,
+    })),
     features: { ...DEFAULT_AUTH_CONFIG.features, ...config.features } as Required<AuthConfig>['features'],
     redirects: { ...DEFAULT_AUTH_CONFIG.redirects, ...config.redirects } as Required<AuthConfig>['redirects'],
   };

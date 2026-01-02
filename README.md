@@ -1,96 +1,221 @@
-# AngularAuth
+# @my-org/angular-auth - Guía de Inicio Rápido
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+## 📦 Resumen del Proyecto
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+Este es un sistema de autenticación completo y reutilizable para Angular 21+.
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
-
-## Run tasks
-
-To run tasks with Nx use:
-
-```sh
-npx nx <target> <project-name>
+```
+angular-auth/
+├── libs/auth/              # 📚 Librería de autenticación (publicable)
+│   ├── src/
+│   │   ├── lib/
+│   │   │   ├── config/     # Configuración y providers
+│   │   │   ├── models/     # DTOs y modelos
+│   │   │   ├── services/   # AuthService, Storage, HTTP
+│   │   │   ├── guards/     # authGuard, roleGuard
+│   │   │   ├── interceptors/ # authInterceptor
+│   │   │   └── components/ # Login, Register, etc.
+│   │   └── index.ts        # Public API
+│   ├── package.json        # @my-org/angular-auth
+│   └── README.md
+│
+└── apps/demo/              # 🎨 App de demostración
+    ├── src/app/
+    │   ├── pages/          # Dashboard, Profile
+    │   ├── app.config.ts   # provideAuth() configurado
+    │   └── app.routes.ts   # Rutas protegidas
+    └── README.md
 ```
 
-For example:
+## 🚀 Estado Actual
 
-```sh
-npx nx build myproject
+### ✅ Completado
+
+1. **Librería Core (`libs/auth/`)**
+   - ✅ Modelos y DTOs del contrato backend ↔ frontend
+   - ✅ Configuración completa (`AuthConfig`)
+   - ✅ Services con Signals (Angular 21)
+     - ✅ `AuthService` (login, register, logout, refresh, etc.)
+     - ✅ `AuthStorageService` (localStorage/sessionStorage/memory)
+     - ✅ `AuthHttpService` (HTTP calls al backend)
+   - ✅ `authInterceptor` funcional (agrega Bearer token)
+   - ✅ `authGuard` y `roleGuard` funcionales
+   - ✅ `provideAuth()` provider principal
+   - ✅ Componentes standalone:
+     - ✅ LoginComponent
+     - ✅ RegisterComponent
+     - ✅ ForgotPasswordComponent
+     - ✅ ResetPasswordComponent
+     - ✅ VerifyEmailComponent
+   - ✅ Public API (`index.ts`) exportando todo
+   - ✅ package.json configurado para publicación
+   - ✅ README completo con documentación
+
+2. **App Demo (`apps/demo/`)**
+   - ✅ Aplicación Angular 21 standalone
+   - ✅ Configurada con `provideAuth()`
+   - ✅ Rutas protegidas con `authGuard`
+   - ✅ Componentes:
+     - ✅ DashboardComponent (muestra info del usuario)
+     - ✅ ProfileComponent (perfil detallado)
+   - ✅ README con instrucciones
+
+## 📝 Próximos Pasos
+
+### 1. Probar la Demo
+
+```bash
+# Ejecutar la app demo
+npx nx serve demo
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+Necesitarás un backend. Ver `apps/demo/README.md` para opciones de mock.
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### 2. Publicar la Librería
 
-## Add new projects
+```bash
+# Compilar
+npx nx build auth
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+# Publicar a npm (privado o público)
+cd dist/libs/auth
+npm publish --access public
 
-To install a new plugin you can use the `nx add` command. Here's an example of adding the React plugin:
-```sh
-npx nx add @nx/react
+# O publicar a GitHub Packages
+npm publish --registry=https://npm.pkg.github.com
 ```
 
-Use the plugin's generator to create new projects. For example, to create a new React app or library:
+### 4. Usar en Otros Proyectos
 
-```sh
-# Generate an app
-npx nx g @nx/react:app demo
+```bash
+# Instalar
+npm install @my-org/angular-auth
 
-# Generate a library
-npx nx g @nx/react:lib some-lib
+# Configurar en app.config.ts
+import { provideAuth } from '@my-org/angular-auth';
+
+export const appConfig = {
+  providers: [
+    provideAuth({
+      apiUrl: 'https://api.example.com/auth',
+      storage: 'localStorage',
+    }),
+  ],
+};
 ```
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+## 🎯 Características Implementadas
 
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Core
+- ✅ Autenticación JWT con refresh automático
+- ✅ Multi-tenant (header o subdomain)
+- ✅ Storage flexible (localStorage/sessionStorage/memory)
+- ✅ Signals reactivos (Angular 21+)
+- ✅ Guards funcionales
+- ✅ Interceptor funcional
+- ✅ Standalone components
+- ✅ Tree-shakeable
 
-## Set up CI!
+### Features Opcionales
+- ✅ Registro de usuarios
+- ✅ Password reset (forgot/reset)
+- ✅ Email verification
+- ✅ Role-based access control
+- ✅ Mappers personalizables (userMapper, tokenMapper)
 
-### Step 1
+### Configuración
+- ✅ Endpoints personalizables
+- ✅ Redirecciones personalizables
+- ✅ Features activables/desactivables
+- ✅ Multi-tenant opcional
+- ✅ Auto-refresh configurable
 
-To connect to Nx Cloud, run the following command:
+## 📖 Documentación
 
-```sh
-npx nx connect
+- **Librería**: `libs/auth/README.md` - Documentación completa de la API
+- **Demo**: `apps/demo/README.md` - Cómo ejecutar la demo
+- **Contrato Backend**: Ver DTOs en `libs/auth/src/lib/models/auth-dtos.ts`
+
+## 🔧 Comandos Útiles
+
+```bash
+# Compilar librería
+npx nx build auth
+
+# Ejecutar demo
+npx nx serve demo
+
+# Ejecutar tests (cuando estén implementados)
+npx nx test auth
+
+# Lint
+npx nx lint auth
+
+# Ver dependencias
+npx nx graph
 ```
 
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
+## 🎨 Ejemplo de Uso
 
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+```typescript
+// app.config.ts
+import { provideAuth } from '@my-org/angular-auth';
 
-### Step 2
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideAuth({
+      apiUrl: 'https://api.example.com/auth',
+      storage: 'localStorage',
+      features: {
+        registration: true,
+        passwordReset: true,
+      },
+    }),
+  ],
+};
 
-Use the following command to configure a CI workflow for your workspace:
+// component.ts
+import { Component, inject } from '@angular/core';
+import { AuthService } from '@my-org/angular-auth';
 
-```sh
-npx nx g ci-workflow
+@Component({
+  template: `
+    @if (auth.isAuthenticated()) {
+      <p>Hola {{ auth.userName() }}!</p>
+      <button (click)="auth.logout()">Logout</button>
+    }
+  `
+})
+export class MyComponent {
+  protected auth = inject(AuthService);
+}
+
+// routes.ts
+import { authGuard } from '@my-org/angular-auth';
+
+export const routes = [
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [authGuard],
+  },
+];
 ```
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## 🤝 Contribuir
 
-## Install Nx Console
+Este es un proyecto interno. Para contribuir:
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+1. Crea una rama feature
+2. Implementa tus cambios
+3. Asegúrate de que compile sin errores
+4. Actualiza la documentación si es necesario
+5. Crea un PR
 
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## 📄 Licencia
 
-## Useful links
+MIT
 
-Learn more:
+---
 
-- [Learn more about this workspace setup](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+**Desarrollado por Agustín Basterra** 🚀
