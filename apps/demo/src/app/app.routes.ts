@@ -5,7 +5,7 @@ import {
   ForgotPasswordComponent,
   ResetPasswordComponent,
   authGuard,
-} from '@my-org/angular-auth';
+} from '@agus-auth/angular-auth';
 
 export const appRoutes: Route[] = [
   // Rutas públicas (auth)

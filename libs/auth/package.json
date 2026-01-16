@@ -1,5 +1,5 @@
 {
-  "name": "@my-org/angular-auth",
+  "name": "@agus-auth/angular-auth",
   "version": "1.0.0",
   "description": "Sistema de autenticación reutilizable para proyectos Angular con soporte para JWT, multi-tenant, y componentes standalone",
   "keywords": [

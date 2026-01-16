@@ -52,13 +52,13 @@ Aplicación de demostración con:
 
 ### Instalación (cuando publiques)
 ```bash
-npm install @my-org/angular-auth
+npm install @agus-auth/angular-auth
 ```
 
 ### Configuración mínima
 ```typescript
 // app.config.ts
-import { provideAuth } from '@my-org/angular-auth';
+import { provideAuth } from '@agus-auth/angular-auth';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -72,7 +72,7 @@ export const appConfig: ApplicationConfig = {
 ### Uso en componentes
 ```typescript
 import { Component, inject } from '@angular/core';
-import { AuthService } from '@my-org/angular-auth';
+import { AuthService } from '@agus-auth/angular-auth';
 
 @Component({
   template: `
@@ -89,7 +89,7 @@ export class MyComponent {
 
 ### Proteger rutas
 ```typescript
-import { authGuard, roleGuard } from '@my-org/angular-auth';
+import { authGuard, roleGuard } from '@agus-auth/angular-auth';
 
 export const routes: Routes = [
   {
@@ -205,7 +205,7 @@ angular-auth/
 │   │   │       ├── reset-password/
 │   │   │       └── verify-email/
 │   │   └── index.ts                     # Public API
-│   ├── package.json                     # @my-org/angular-auth
+│   ├── package.json                     # @agus-auth/angular-auth
 │   └── README.md
 │
 ├── apps/demo/                    # App de demostración
@@ -244,7 +244,7 @@ npx nx build auth
 {
   "compilerOptions": {
     "paths": {
-      "@my-org/angular-auth": ["libs/auth/src/index.ts"]
+      "@agus-auth/angular-auth": ["libs/auth/src/index.ts"]
     }
   }
 }
@@ -291,7 +291,7 @@ No estás obligado a usar los componentes incluidos:
 
 ```typescript
 // Usa solo el core
-import { provideAuth, AuthService } from '@my-org/angular-auth';
+import { provideAuth, AuthService } from '@agus-auth/angular-auth';
 
 // Y crea tus propios componentes de login/register
 ```
@@ -336,7 +336,7 @@ provideAuth({
 
 1. **Node.js**: Idealmente usa Node.js 20.19+ o 22.12+ para evitar warnings
 2. **Backend**: Necesitas implementar el backend que cumpla el contrato de DTOs
-3. **Publicación**: Cambia `@my-org` por tu scope de npm antes de publicar
+3. **Publicación**: Cambia `@agus-auth` por tu scope de npm antes de publicar
 4. **Testing**: Se puede agregar testing con Jest/Jasmine posteriormente
 
 ## 🤔 ¿Dudas?

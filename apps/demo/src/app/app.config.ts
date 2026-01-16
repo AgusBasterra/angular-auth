@@ -3,7 +3,7 @@ import {
   provideBrowserGlobalErrorListeners,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { provideAuth } from '@my-org/angular-auth';
+import { provideAuth } from '@agus-auth/angular-auth';
 import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {

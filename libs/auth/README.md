@@ -1,4 +1,4 @@
-# @my-org/angular-auth
+# @agus-auth/angular-auth
 
 > Sistema de autenticación reutilizable para proyectos Angular 21+ con Signals, Standalone APIs, y soporte completo para JWT, multi-tenant, y más.
 
@@ -17,7 +17,7 @@
 ## 📦 Instalación
 
 ```bash
-npm install @my-org/angular-auth
+npm install @agus-auth/angular-auth
 ```
 
 ## 🎯 Quick Start
@@ -27,7 +27,7 @@ npm install @my-org/angular-auth
 ```typescript
 import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { provideAuth } from '@my-org/angular-auth';
+import { provideAuth } from '@agus-auth/angular-auth';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -50,7 +50,7 @@ export const appConfig: ApplicationConfig = {
 
 ```typescript
 import { Component, inject } from '@angular/core';
-import { AuthService } from '@my-org/angular-auth';
+import { AuthService } from '@agus-auth/angular-auth';
 
 @Component({
   selector: 'app-profile',
@@ -74,7 +74,7 @@ export class ProfileComponent {
 
 ```typescript
 import { Routes } from '@angular/router';
-import { authGuard, roleGuard } from '@my-org/angular-auth';
+import { authGuard, roleGuard } from '@agus-auth/angular-auth';
 
 export const routes: Routes = [
   {
@@ -200,7 +200,7 @@ import {
   ForgotPasswordComponent,
   ResetPasswordComponent,
   VerifyEmailComponent,
-} from '@my-org/angular-auth';
+} from '@agus-auth/angular-auth';
 
 export const authRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -300,7 +300,7 @@ provideAuth({
 
 ```typescript
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { provideAuthWithoutInterceptor, authInterceptor } from '@my-org/angular-auth';
+import { provideAuthWithoutInterceptor, authInterceptor } from '@agus-auth/angular-auth';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -319,7 +319,7 @@ export const appConfig: ApplicationConfig = {
 ### Login Manual
 ```typescript
 import { Component, inject } from '@angular/core';
-import { AuthService } from '@my-org/angular-auth';
+import { AuthService } from '@agus-auth/angular-auth';
 
 @Component({
   template: `
@@ -362,7 +362,7 @@ export class MyComponent {
 
 ```typescript
 import { TestBed } from '@angular/core/testing';
-import { provideAuth, AuthService } from '@my-org/angular-auth';
+import { provideAuth, AuthService } from '@agus-auth/angular-auth';
 
 describe('MyComponent', () => {
   beforeEach(() => {

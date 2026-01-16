@@ -1,5 +1,5 @@
 // ===========================
-// PUBLIC API DE @my-org/angular-auth
+// PUBLIC API DE @agus-auth/angular-auth
 // ===========================
 
 // Provider principal

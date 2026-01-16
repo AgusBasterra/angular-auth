@@ -1,4 +1,4 @@
-# Demo App - @my-org/angular-auth
+# Demo App - @agus-auth/angular-auth
 
 Aplicación de demostración del sistema de autenticación.
 

@@ -1,4 +1,4 @@
-# @my-org/angular-auth - Guía de Inicio Rápido
+# @agus-auth/angular-auth - Guía de Inicio Rápido
 
 ## 📦 Resumen del Proyecto
 
@@ -16,7 +16,7 @@ angular-auth/
 │   │   │   ├── interceptors/ # authInterceptor
 │   │   │   └── components/ # Login, Register, etc.
 │   │   └── index.ts        # Public API
-│   ├── package.json        # @my-org/angular-auth
+│   ├── package.json        # @agus-auth/angular-auth
 │   └── README.md
 │
 └── apps/demo/              # 🎨 App de demostración
@@ -42,10 +42,10 @@ Necesitarás un backend. Ver `apps/demo/README.md` para opciones de mock.
 
 ```bash
 # Instalar
-npm install @my-org/angular-auth
+npm install @agus-auth/angular-auth
 
 # Configurar en app.config.ts
-import { provideAuth } from '@my-org/angular-auth';
+import { provideAuth } from '@agus-auth/angular-auth';
 
 export const appConfig = {
   providers: [
@@ -112,7 +112,7 @@ npx nx graph
 
 ```typescript
 // app.config.ts
-import { provideAuth } from '@my-org/angular-auth';
+import { provideAuth } from '@agus-auth/angular-auth';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -129,7 +129,7 @@ export const appConfig: ApplicationConfig = {
 
 // component.ts
 import { Component, inject } from '@angular/core';
-import { AuthService } from '@my-org/angular-auth';
+import { AuthService } from '@agus-auth/angular-auth';
 
 @Component({
   template: `
@@ -144,7 +144,7 @@ export class MyComponent {
 }
 
 // routes.ts
-import { authGuard } from '@my-org/angular-auth';
+import { authGuard } from '@agus-auth/angular-auth';
 
 export const routes = [
   {
