@@ -1,5 +1,5 @@
 // ===========================
-// PUBLIC API DE @agus-auth/angular-auth
+// PUBLIC API DE @AgusBasterra/angular-auth
 // ===========================
 
 // Provider principal

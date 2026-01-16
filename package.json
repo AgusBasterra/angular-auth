@@ -2,7 +2,12 @@
   "name": "@angular-auth/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build:auth": "nx build auth",
+    "copy:npmrc": "node -e \"const fs=require('fs');const path=require('path');if(fs.existsSync('.npmrc')){fs.copyFileSync('.npmrc',path.join('dist','libs','auth','.npmrc'));console.log('✓ .npmrc copiado');}else{console.log('⚠ .npmrc no encontrado, se usará el del dist');}\"",
+    "publish:auth": "npm run build:auth && npm run copy:npmrc && cd dist/libs/auth && npm publish",
+    "publish:auth:dry-run": "npm run build:auth && npm run copy:npmrc && cd dist/libs/auth && npm publish --dry-run"
+  },
   "private": true,
   "devDependencies": {
     "@angular-devkit/build-angular": "^21.0.4",
